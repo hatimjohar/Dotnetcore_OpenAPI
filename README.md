@@ -17,7 +17,52 @@ Open API is an description format for REST based API, it allows us to describe o
 - [x] Editor like Visual Studio or Visual Studio Editor
 - [x] Existing api solution created in dotnet core -- refer this git repo to know how to create web api https://github.com/hatimjohar/dotnetcore_webapi 
 
-<h3> Step 1 - </h3>
+<h3> Step 1 - Add Swashbuckle package</h3>
 
-Add Nugut package - 
+Add Nugut package - Swashbuckle.AspNetCore
 
+![alt text](http://url/to/img.png)
+
+<h3> Step 2 - Update contents in startup.cs file</h3>
+
+Firstly confugure Swagger middle ware by adding following content to the ConfigureServices method
+
+```c#
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+    services.AddSwaggerGen(c =>
+    {
+        c.SwaggerDoc("v1", new Info { Title = "Dotnet core web api", Version = "v1" });
+    });
+}
+```
+
+In order to use Info class, we need to add following using **using Swashbuckle.AspNetCore.Swagger;**  <br/> 
+
+Then add swagger UI endpoint for swagger in Congure method as shown below
+
+```c#
+ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+  {
+      if (env.IsDevelopment())
+      {
+          app.UseDeveloperExceptionPage();
+      }
+
+      app.UseSwagger();
+      app.UseSwaggerUI(c =>
+      {
+          c.SwaggerEndpoint("/swagger/v1/swagger.json", "Dotnet core web api v1");
+      });
+
+      app.UseMvc();
+  }
+```
+
+<h3> Finally run our application </h3>
+
+Once your application is started, type the url in this fashion **http://localhost:port/swagger
+
+![alt text](http://url/to/img.png)
