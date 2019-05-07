@@ -21,7 +21,7 @@ Open API is an description format for REST based API, it allows us to describe o
 
 Add Nugut package - Swashbuckle.AspNetCore
 
-![alt text](http://url/to/img.png)
+![Swashbuckle](https://github.com/hatimjohar/Dotnetcore_OpenAPI/blob/master/OpenAPI/images/swashbuckle.png)
 
 <h3> Step 2 - Update contents in startup.cs file</h3>
 
@@ -65,4 +65,4 @@ Then add swagger UI endpoint for swagger in Congure method as shown below
 
 Once your application is started, type the url in this fashion **http://localhost:port/swagger
 
-![alt text](http://url/to/img.png)
+![Swagger UI](https://github.com/hatimjohar/Dotnetcore_OpenAPI/blob/master/OpenAPI/images/swagger-ui.png)
